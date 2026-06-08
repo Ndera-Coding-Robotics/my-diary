@@ -1,18 +1,102 @@
-<!doctype html>
-<html>
+﻿<!doctype html>
+<html lang="en">
   <head>
-    <title>Diary</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title>My Diary</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <img src="dairyimg.jpg" />
-    <h2>My Diary</h2>
+    <button
+      id="themeToggle"
+      class="theme-toggle"
+      title="Toggle dark/light mode"
+    >
+      🌙
+    </button>
+    <div class="container">
+      <header class="header">
+        <img src="dairyimg.jpg" alt="Diary" class="diary-img" />
+        <h1>My Diary</h1>
+        <p class="subtitle">Your personal thoughts and memories</p>
+      </header>
 
-    <textarea id="t"></textarea>
+      <div class="input-section">
+        <div class="prompt-section">
+          <div class="prompt-header">
+            <h2>Daily prompts</h2>
+            <p>Choose one to inspire your entry:</p>
+          </div>
+          <div class="prompt-buttons">
+            <button
+              type="button"
+              class="prompt-btn"
+              data-prompt="What made you smile today?"
+            >
+              What made you smile today?
+            </button>
+            <button
+              type="button"
+              class="prompt-btn"
+              data-prompt="What challenge did you overcome?"
+            >
+              What challenge did you overcome?
+            </button>
+          </div>
+          <div id="selectedPrompt" class="selected-prompt hidden">
+            Selected prompt: <strong id="selectedPromptText"></strong>
+            <button type="button" id="clearPromptBtn" class="btn btn-link">
+              Clear
+            </button>
+          </div>
+        </div>
 
-    <button onclick="s()">Save</button>
+        <textarea
+          id="entryInput"
+          placeholder="Write your thoughts here..."
+        ></textarea>
 
-    <div id="d"></div>
+        <div class="meta-row">
+          <label class="meta-field">
+            Category
+            <select id="categorySelect">
+              <option value="">None</option>
+              <option value="Work">Work</option>
+              <option value="School">School</option>
+              <option value="Travel">Travel</option>
+              <option value="Family">Family</option>
+            </select>
+          </label>
+          <label class="meta-field">
+            Tags
+            <input
+              id="tagsInput"
+              type="text"
+              placeholder="Add tags, comma separated"
+            />
+          </label>
+        </div>
+
+        <div class="button-group">
+          <button id="saveBtn" class="btn btn-primary">Save Entry</button>
+          <button id="clearBtn" class="btn btn-secondary">Clear</button>
+        </div>
+        <div class="tool-row">
+          <span id="charCount">0 chars</span>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search entries, tags, categories..."
+          class="search-box"
+        />
+      </div>
+
+      <div id="entriesContainer" class="entries-container"></div>
+    </div>
 
     <script src="script.js"></script>
   </body>
